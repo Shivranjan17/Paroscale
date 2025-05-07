@@ -1,0 +1,61 @@
+Basic Algorithm for LRU Cache with File Metadata
+The following is a simplified algorithm for maintaining an LRU Cache that stores metadata about files, and handles expiration of old entries.
+
+1. Initialize LRU Cache
+Input: capacity, expirationTimeSeconds
+
+Create an empty LinkedHashMap to store cache entries with a LRU (Least Recently Used) eviction policy.
+
+The map's keys are file paths (String), and the values are instances of FileInfo which stores the file's metadata (path, last accessed time, size, inode).
+
+2. Add Entry to Cache
+Input: filePath
+
+Steps:
+
+Fetch the BasicFileAttributes for the given filePath using Files.readAttributes.
+
+Extract the following information:
+
+size: Size of the file.
+
+inode: Inode information obtained via fileKey().
+
+lastAccessedTime: Current time when the file is being accessed.
+
+Store this information in a FileInfo object.
+
+Add the filePath as a key and the FileInfo object as the value to the cache.
+
+If the cache exceeds the defined capacity, remove the least recently used (LRU) entry.
+
+3. Get Entry from Cache
+Input: filePath
+
+Steps:
+
+Look up the filePath in the cache.
+
+If found, return the associated FileInfo object.
+
+If not found, return null.
+
+4. Remove Expired Entries
+Input: None
+
+Steps:
+
+Iterate through the cache entries.
+
+For each entry, check if the lastAccessedTime is older than the expiration time (expirationTimeSeconds).
+
+If the file has expired (i.e., it hasn’t been accessed for longer than the expiration time), remove it from the cache.
+
+5. Print Cache
+Input: None
+
+Steps:
+
+Iterate through all entries in the cache.
+
+Print the file path, size, and inode for each file stored in the cache.

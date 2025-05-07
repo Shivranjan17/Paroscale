@@ -1,0 +1,37 @@
+:
+
+🔹 Algorithm: Multi-threaded Unique Number Extractor
+Input
+
+A text file containing one integer per line.
+
+Initialization
+
+Create a thread-safe global data structure (e.g., ConcurrentHashMap.newKeySet() in Java) to store unique numbers.
+
+Read File
+
+Read all the integers from the input file and store them in a list.
+
+Divide Work
+
+Choose the number of threads (e.g., 4).
+
+Divide the list into equal chunks (sub-lists), one for each thread.
+
+Thread Processing
+
+For each chunk, create a thread:
+
+Each thread goes through its assigned sublist.
+
+Each number is added to the global unique set.
+
+Wait for Threads to Finish
+
+Join all threads (i.e., wait for all threads to complete execution).
+
+Output
+
+Print the final list of unique numbers from the global set (sorted if needed).
+
