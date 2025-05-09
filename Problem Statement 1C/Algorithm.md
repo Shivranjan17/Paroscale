@@ -108,4 +108,6 @@ Implement a Least Recently Used (LRU) Cache that:
 
 **Cache Capacity = 3**
 
-- Initial Cache:
+- Adding File4:
+- File4 is added to front.
+- File3 (least recently used) is removed.
